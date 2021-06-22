@@ -9,7 +9,7 @@ Your entitlement includes the console for managing your operation network. Use t
 
 Experienced Hyperledger Fabric customers who prefer to deploy and manage their containers can download and use the peer, CA, orderer, and smart contract container images without the management console.
 
-The ** Operations Console** is an open source stand-alone entitlement. You are responsible for provisioning your own Kubernetes cluster for image deployment. Additionally, you will need to [open ports in your firewall](/docs/security) if you are using one.
+The ** Operations Console** is an open source stand-alone entitlement. You are responsible for provisioning your own Kubernetes cluster for image deployment. Additionally, you will need to [open ports in your firewall](security) if you are using one.
 
 ### Operations Console images
 
@@ -22,9 +22,9 @@ The ** Operations Console** is an open source stand-alone entitlement. You are r
 
 The Operations Console uses a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/){: external} to install the Operations Console console on your cluster and manage the deployment and your blockchain nodes. A cluster administrator can use your entitlement key to deploy the platform on any Kubernetes Cluster.
 
-- If you are deploying the perations Console on open source Kubernetes, use the steps described in the [Deploying Operations Console on Kubernetes](/docs/console-deploy-k8).
+- If you are deploying the perations Console on open source Kubernetes, use the steps described in the [Deploying Operations Console on Kubernetes](console-deploy-k8).
 
-- If you are an experienced Hyperledger Fabric customer and prefer to only use the Operations Console images, see [Using the Operations Console images](/docs/console-images). Consult the Fabric documentation for further deployment, configuration, and management instructions. The rest of the steps in this topic do not apply when using the images.
+- If you are an experienced Hyperledger Fabric customer and prefer to only use the Operations Console images, see [Using the Operations Console images](console-images). Consult the Fabric documentation for further deployment, configuration, and management instructions. The rest of the steps in this topic do not apply when using the images.
 
 ### Step two: Grant console access to other users
 
@@ -32,4 +32,4 @@ After the platform is deployed, the console administrator can log in to the cons
 
 ### Step three: Connect networks across clouds
 
-You can use your console to operate components that are running on other clusters. First, you need to export the component information to a JSON file from the console where the component was originally deployed. Then, you can import the node JSON file into the console that is deployed on your local cluster and manage the components across clouds. For more information, see [Importing nodes](/docs/console-import-nodes#ibp-console-import-nodes).
+You can use your console to operate components that are running on other clusters. First, you need to export the component information to a JSON file from the console where the component was originally deployed. Then, you can import the node JSON file into the console that is deployed on your local cluster and manage the components across clouds. For more information, see [Importing nodes](console-import-nodes#ibp-console-import-nodes).
