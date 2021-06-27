@@ -234,7 +234,7 @@ When creating a peer or orderer with your console, you can also use the TLS CA t
 
 Certificates expire and need to be renewed regularly in a process referred to as "certificate rotation". In a production network, you need to monitor the expiration dates of the various certificates and make plans to renew them before they expire. The platform attempts to automatically renew the enrollment certificates of the peer and ordering nodes 30 days before they expire, but you are responsible for manually renewing the organization admin certificates for your nodes, system channels and application channels. It is recommended that you review the topic on [managing certificates](console-certificates#managing-certificates) to learn more about what is required.
 
-## <a id="storing-identities-in-your-console-wallet"></a>Storing identities in your console wallet
+## Storing identities in your console wallet
 
 The wallet stores the identities and keys that the Fabric Operations Console console uses to operate the nodes of your network. You need to add your peer, orderer, and organization admins to this wallet before you can use the console to work with channels and smart contracts. You can also use the wallet to conveniently store the identities you use for your applications. You can use the wallet to export them at any time. Use the left navigation to browse to the wallet overview panel. You can add, update, and export identities from this wallet by using the overview panel.
 
