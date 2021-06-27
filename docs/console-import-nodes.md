@@ -213,3 +213,13 @@ As an example, you can find the JSON file of a peer below. To communicate with t
 <br>
 
 [This is to test anchor link without backstroke](console-identities#storing-identities-in-your-console-wallet)
+<br>
+<br>
+
+[[ This is the 3rd method to test anchor link. | console-identities#storing-identities-in-your-console-wallet ]]
+<br>
+<br>
+
+[This is to test anchor link without backstroke](/docs/console-identities#storing-identities-in-your-console-wallet)
+<br>
+<br>
