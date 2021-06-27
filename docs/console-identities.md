@@ -202,7 +202,7 @@ On the second side panel, click the **Add Attribute** button. Provide an **attri
 
 ## <a id="enrolling-an-identity"></a>Enrolling an identity
 
-You can generate the signing certificate and private key for each user that is registered with your CA. If you registered additional admin identities with your CA, you can generate the certificate and key for the admin identity and then include the certificate when you [create your organization MSP](console-organizations/#create-your-organization-msp).
+You can generate the signing certificate and private key for each user that is registered with your CA. If you registered additional admin identities with your CA, you can generate the certificate and key for the admin identity and then include the certificate when you [create your organization MSP](console-organizations#create-your-organization-msp).
 
 Before you enroll an identity, you need to [Associate the identity of the CA admin](#associating-the-identity-of-the-ca) to be able to operate the CA. If the identity is not set, you will not be able to view the **Registered Users** table on the CA panel. In the Registered users table, navigate to the action menu <img src="images/overflow-menu.png" alt="over flow menu icon"> for the user and click **Enroll identity**  to generate the certificate and key for any user registered with the CA.
 
@@ -226,13 +226,13 @@ Each CA created by the Fabric Operations Console console contains a root CA and 
 
 You can use each identity in the Registered Users table to generate TLS certificates. Follow the same process as you used to [enroll an identity](#enrolling-an-identity) by using your root CA. However, on the **Enroll identity** panel, select the **TLS Certificate Authority** from the **Certificate Authorities** drop-down list.
 
-Each peer or orderer node that you deploy needs to generate a public TLS certificate. When you create peer or orderer nodes, you can use the same enroll ID and secret that you used to generate the peer or orderer identity as the TLS enroll ID and secret because the TLS CA uses the same user repository as the organization CA. The node then uses this identity to generate its TLS certificate during deployment. This certificate is required by any application that needs to communicate with the orderer or peer. You can find the TLS certificate of a node by navigating to the node overview panel and clicking Settings. You can also find the TLS Certs of your peers and orderers in the connection profile that can be downloaded [from the organization MSP tile on the organizations tab](console-organizations/#downloading-a-connection-profile).
+Each peer or orderer node that you deploy needs to generate a public TLS certificate. When you create peer or orderer nodes, you can use the same enroll ID and secret that you used to generate the peer or orderer identity as the TLS enroll ID and secret because the TLS CA uses the same user repository as the organization CA. The node then uses this identity to generate its TLS certificate during deployment. This certificate is required by any application that needs to communicate with the orderer or peer. You can find the TLS certificate of a node by navigating to the node overview panel and clicking Settings. You can also find the TLS Certs of your peers and orderers in the connection profile that can be downloaded [from the organization MSP tile on the organizations tab](console-organizations#downloading-a-connection-profile).
 
 When creating a peer or orderer with your console, you can also use the TLS CA to specify an additional domain name for each node. Enter the new domain name in the **TLS CSR hostname** field when deploying your orderer or peer. This hostname will be added to the list of common names in the TLS certificate issued to your node.
 
 ## <a id="certificate-renewal-and-expiration"></a>Certificate renewal and expiration
 
-Certificates expire and need to be renewed regularly in a process referred to as "certificate rotation". In a production network, you need to monitor the expiration dates of the various certificates and make plans to renew them before they expire. The platform attempts to automatically renew the enrollment certificates of the peer and ordering nodes 30 days before they expire, but you are responsible for manually renewing the organization admin certificates for your nodes, system channels and application channels. It is recommended that you review the topic on [managing certificates](console-certificates/#managing-certificates) to learn more about what is required.
+Certificates expire and need to be renewed regularly in a process referred to as "certificate rotation". In a production network, you need to monitor the expiration dates of the various certificates and make plans to renew them before they expire. The platform attempts to automatically renew the enrollment certificates of the peer and ordering nodes 30 days before they expire, but you are responsible for manually renewing the organization admin certificates for your nodes, system channels and application channels. It is recommended that you review the topic on [managing certificates](console-certificates#managing-certificates) to learn more about what is required.
 
 ## <a id="storing-identities-in-your-console-wallet"></a>Storing identities in your console wallet
 
@@ -242,7 +242,7 @@ The wallet stores the identities and keys that the Fabric Operations Console con
 
 ### <a id="adding-identities"></a>Adding identities
 
-You can add an admin identity to your wallet when you [create your organization MSP](console-organizations/#console-organizations-create-msp). A CA managed by the console can also add an identity to your wallet during the [enrollment process](#enrolling-an-identity).
+You can add an admin identity to your wallet when you [create your organization MSP](console-organizations#console-organizations-create-msp). A CA managed by the console can also add an identity to your wallet during the [enrollment process](#enrolling-an-identity).
 
 You can use the **Add identity** button on the overview panel to import an identity directly into the wallet. Clicking this button opens up a side panel that allows you to add an identity's signing certificate and private key.
 - **Name:** Enter an identity name that is used for your reference only.
