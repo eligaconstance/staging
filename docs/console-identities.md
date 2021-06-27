@@ -10,7 +10,6 @@ The nodes of the Operations Console are based on Hyperledger Fabric and builds p
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
 ## Managing Certificate Authorities (CAs)
-{: #ibp-console-identities-manage-ca}
 
 A CA is similar to a publicly trusted notary that acts as an anchor of trust among multiple parties, with each organization in a consortium maintaining their own CA. Your CA creates the identities that belong to your organization and issue each identity a signing certificate and private key. These keys are what allow all of your nodes and applications to sign and verify their actions. For more information about how CAs are used to establish identity, see [the identity topic](https://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html) in the Hyperledger Fabric documentation.
 
@@ -27,7 +26,6 @@ You can use the console to create these identities by using the [registration pr
 
 
 ## Associating the identity of the CA admin
-{: #ibp-console-identities-ca-identity}
 
 Before you can create identities, you need to associate the identity of the CA admin. Open your CA on the **Nodes** tab. If you are using the CA for the first time, you can click the **Associate identity** button to generate the CA admin identity and import it into your console wallet. On the **Associate identity** side panel, provide the Enroll ID and Enroll secret of the CA admin that you provided when you created the CA.
 
@@ -35,12 +33,10 @@ You can view the enroll ID of the associated admin on the left side of the CA pa
 
 To use a different identity as the CA admin, click the identity that is associated with the CA admin. This opens the **Associate identity** side panel. You can use the **Enroll an identity** tab to provide the enrollID and secret of another CA admin. You can specify an identity that exists in the wallet by using the **Select an existing identity** tab.
 
-You can only use admin identities to register new users. You can create new admins with restrictions on the type of users they are allowed to create. As a result, you can let another user operate your CA by providing them an admin that is not able to create admins or deploy nodes. This allows other members or departments of your organization to access your CA without compromising your network. For more information, see [Creating new CA admins](#creating-new-ca-admin).
-{: note}
+>**_NOTE:_** You can only use admin identities to register new users. You can create new admins with restrictions on the type of users they are allowed to create. As a result, you can let another user operate your CA by providing them an admin that is not able to create admins or deploy nodes. This allows other members or departments of your organization to access your CA without compromising your network. For more information, see [Creating new CA admins](#creating-new-ca-admin).
 
 
 ## Registering identities
-{: #ibp-console-identities-register}
 
 The first step in creating an identity is known as **registration**. During registration, an enroll ID and secret are created which can be used by a node or an org administrator to **enroll** this identity by generating a signing certificate and private key.  
 
@@ -70,7 +66,6 @@ If you need to delete a registered user, click the action menu next to any user 
 **Delete user**. If that option is not available, it can be enabled on your CA by overriding the CA configuration. See the following example of how to enable this feature in **Modifying a CA configuration after deployment**. 
 
 **Modifying CA settings after deployment**
-{: #ibp-console-adv-deployment-ca-modify-json}
 
 After a CA is deployed, a subset of the fields can be updated as well. Click the CA tile in the console and then the **Settings** icon to open a side panel. Click **Edit configuration JSON (Advanced)** to override the CA settings. The `JSON` in the **Current configuration** box contains the current settings for the CA. **Not all of these values can be overridden.**
 
@@ -199,17 +194,15 @@ If you need to enable deletion of registered users from a CA you would insert `"
 
 Note this action does not revoke the associated certificates for the user. If you need to do that you would need to insert the associated signed certificate into the organization MSP under the `"revocation_list":` section. And then update that MSP definition everywhere that it occurs on the network.
 
-### Creating new CA admins
-{: #ibp-console-identities-ca-admin}
+### <a id="creating-new-ca-admins"></a>Creating new CA admins
 
 By default, only the CA admin that is created during deployment has the ability to register new identities. You can create identities with the ability the register new users by using the **Attributes** panel of the registration process.
 
 On the second side panel, click the **Add Attribute** button. Provide an **attribute name** of `hf.Registrar.Roles`. Enter an **attribute value** of `*`. You can also use this panel to create an identity that can register only certain identity types, such as clients or peers, or within a certain affiliation. You can also create an identity that has the ability to revoke an identity and all the certificates that the identity has been issued. You can see a full list of the attributes in the [Registering a new identity](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity) section of the Fabric CA users guide.
 
-## Enrolling an identity
-{: #ibp-console-identities-enroll}
+## <a id="enrolling-an-identity"></a>Enrolling an identity
 
-You can generate the signing certificate and private key for each user that is registered with your CA. If you registered additional admin identities with your CA, you can generate the certificate and key for the admin identity and then include the certificate when you [create your organization MSP](console-organizations#creating-a-msp-for-your organization).
+You can generate the signing certificate and private key for each user that is registered with your CA. If you registered additional admin identities with your CA, you can generate the certificate and key for the admin identity and then include the certificate when you [create your organization MSP](console-organizations/#create-your-organization-msp).
 
 Before you enroll an identity, you need to [Associate the identity of the CA admin](#associating-the-identity-of-the-ca) to be able to operate the CA. If the identity is not set, you will not be able to view the **Registered Users** table on the CA panel. In the Registered users table, navigate to the action menu <img src="images/overflow-menu.png" alt="over flow menu icon"> for the user and click **Enroll identity**  to generate the certificate and key for any user registered with the CA.
 
@@ -225,8 +218,7 @@ Before you enroll an identity, you need to [Associate the identity of the CA adm
 
 You can also use the Fabric CA client or Fabric SDKs to enroll the identities you create in the console. The console provides you with all of the information that need to compete these steps. Ensure that you have saved the **Enroll ID** and **Enroll secret** that you specified during registration.
 
-## Using your TLS CA
-{: #ibp-console-identities-tlsca}
+## <a id="using-your-tls-ca"></a>Using your TLS CA
 
 The communication within your network is secured by TLS certificates. TLS encrypts the communication between your nodes and between your nodes and your applications. Using TLS prevents attackers from disrupting the communication between your nodes or reading the transactions that are submitted from your applications. The keys and certificates that are used for TLS are different than the certificates used to sign and validate your transactions and are issued by a separate Certificate Authority.
 
@@ -234,33 +226,28 @@ Each CA created by the Fabric Operations Console console contains a root CA and 
 
 You can use each identity in the Registered Users table to generate TLS certificates. Follow the same process as you used to [enroll an identity](#enrolling-an-identity) by using your root CA. However, on the **Enroll identity** panel, select the **TLS Certificate Authority** from the **Certificate Authorities** drop-down list.
 
-Each peer or orderer node that you deploy needs to generate a public TLS certificate. When you create peer or orderer nodes, you can use the same enroll ID and secret that you used to generate the peer or orderer identity as the TLS enroll ID and secret because the TLS CA uses the same user repository as the organization CA. The node then uses this identity to generate its TLS certificate during deployment. This certificate is required by any application that needs to communicate with the orderer or peer. You can find the TLS certificate of a node by navigating to the node overview panel and clicking Settings. You can also find the TLS Certs of your peers and orderers in the connection profile that can be downloaded [from the organization MSP tile on the organizations tab](console-organizations#downloading-a-connection-profile).
+Each peer or orderer node that you deploy needs to generate a public TLS certificate. When you create peer or orderer nodes, you can use the same enroll ID and secret that you used to generate the peer or orderer identity as the TLS enroll ID and secret because the TLS CA uses the same user repository as the organization CA. The node then uses this identity to generate its TLS certificate during deployment. This certificate is required by any application that needs to communicate with the orderer or peer. You can find the TLS certificate of a node by navigating to the node overview panel and clicking Settings. You can also find the TLS Certs of your peers and orderers in the connection profile that can be downloaded [from the organization MSP tile on the organizations tab](console-organizations/#downloading-a-connection-profile).
 
 When creating a peer or orderer with your console, you can also use the TLS CA to specify an additional domain name for each node. Enter the new domain name in the **TLS CSR hostname** field when deploying your orderer or peer. This hostname will be added to the list of common names in the TLS certificate issued to your node.
 
-## Certificate renewal and expiration
-{: #ibp-console-identities-expiration}
+## <a id="certificate-renewal-and-expiration"></a>Certificate renewal and expiration
 
 Certificates expire and need to be renewed regularly in a process referred to as "certificate rotation". In a production network, you need to monitor the expiration dates of the various certificates and make plans to renew them before they expire. The platform attempts to automatically renew the enrollment certificates of the peer and ordering nodes 30 days before they expire, but you are responsible for manually renewing the organization admin certificates for your nodes, system channels and application channels. It is recommended that you review the topic on [managing certificates](console-certificates/#managing-certificates) to learn more about what is required.
 
-## Storing identities in your console wallet
-{: #ibp-console-identities-wallet}
+## <a id="storing-identities-in-your-console-wallet"></a>Storing identities in your console wallet
 
 The wallet stores the identities and keys that the Fabric Operations Console console uses to operate the nodes of your network. You need to add your peer, orderer, and organization admins to this wallet before you can use the console to work with channels and smart contracts. You can also use the wallet to conveniently store the identities you use for your applications. You can use the wallet to export them at any time. Use the left navigation to browse to the wallet overview panel. You can add, update, and export identities from this wallet by using the overview panel.
 
-The wallet is a component of the console and not a separate service. It stores your keys in the local storage of the browser that you use to access the console instead of your local file system. If you access your console from a different browser, or start a private browsing session, you will not be able to access the identities stored in the wallet. **It is recommended that you export your admin identities from the console and store them in a safe place**.
-{:important}
+>**_IMPORTANT:_** The wallet is a component of the console and not a separate service. It stores your keys in the local storage of the browser that you use to access the console instead of your local file system. If you access your console from a different browser, or start a private browsing session, you will not be able to access the identities stored in the wallet. **It is recommended that you export your admin identities from the console and store them in a safe place**.
 
-### Adding identities
-{: #ibp-console-identities-add}
+### <a id="adding-identities"></a>Adding identities
 
-You can add an admin identity to your wallet when you [create your organization MSP](console-organizations#console-organizations-create-msp). A CA managed by the console can also add an identity to your wallet during the [enrollment process](#enrolling-an-identity).
+You can add an admin identity to your wallet when you [create your organization MSP](console-organizations/#console-organizations-create-msp). A CA managed by the console can also add an identity to your wallet during the [enrollment process](#enrolling-an-identity).
 
 You can use the **Add identity** button on the overview panel to import an identity directly into the wallet. Clicking this button opens up a side panel that allows you to add an identity's signing certificate and private key.
 - **Name:** Enter an identity name that is used for your reference only.
 - **Certificate:** Upload a file that contains the identity's signing certificate (in base64 or PEM format) that you generated by using your CA.
 - **Private Key:** Upload a file that contains the identity's private key (in base64 or PEM format) that you generated by using your CA.
-
 
 You can also add an identity by uploading a JSON file in the format below. You can also use the **Upload JSON** button to upload multiple identities at once.
 
@@ -272,7 +259,6 @@ You can also add an identity by uploading a JSON file in the format below. You c
 }
 ```
 
-
 If you did not enroll an identity from the console, but instead by using the Fabric CA client or the Fabric SDKs, your keys need to be converted from PEM format into base64 format. You can convert certificates into base64 format by running the following command on your local machine:
 ```
 export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
@@ -280,15 +266,13 @@ cat $HOME/<path-to-certificate>/cert.pem | base64 $FLAG
 ```
 
 
-### Viewing and updating identities
-{: #ibp-console-identities-update-identities}
+### <a id="viewing-and-updating-identities"></a>Viewing and updating identities
 
 From the **Wallet** tab, click a tile to view, update, or remove an identity from the wallet. It might be necessary to update your identities if their certificates have expired, and they need to be issued new keys from the CA. You can also use this tab to delete keys from your console and your local system.
 
 Clicking an identity opens a side panel that displays its certificates and private keys in base64 format. Click **Export** to download the identity's certificates to your local file system. Click **Update** to change the identity name in the wallet or paste a new set of keys into the panel. Click **Remove** when you no longer need to use this identity and want to delete its keys.
 
-## Viewing the contents of a signing certificate
-{: #ibp-console-identities-sign-cert}
+## <a id="viewing-the-contents-of-a-signing-certificate"></a>Viewing the contents of a signing certificate
 
 As a network operator, there may be situations when you need to view the contents of a signing certificate, or sign cert, to debug a problem.
 If you have the certificate `PEM` file, you can run the following openSSL command to print out the certificate contents:
