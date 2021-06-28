@@ -220,8 +220,8 @@ As an example, you can find the JSON file of a peer below. To communicate with t
 <br>
 <br>
 
-[This is to test anchor link without backstroke](/staging/console-identities#storing-identities-in-your-console-wallet)
+[This is to test anchor link without backstroke](/staging/console-identities#creating-managing-identities)
 <br>
 <br>
 
-<a href="/staging/console-identities#storing-identities-in-your-console-wallet" target="_blank">Open new window test</a>
+<a href="/staging/console-identities#managing-ca" target="_blank">Open new window test</a>
