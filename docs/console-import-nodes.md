@@ -220,7 +220,7 @@ As an example, you can find the JSON file of a peer below. To communicate with t
 <br>
 <br>
 
-[This is to test anchor link without backstroke](/staging/console-identities#creating-managing-identities)
+[This is to test anchor link without backstroke](/staging/console-identities#managing-certificate-authorities-cas)
 <br>
 <br>
 

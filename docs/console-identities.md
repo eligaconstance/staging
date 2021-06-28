@@ -9,7 +9,7 @@ The nodes of the Operations Console are based on Hyperledger Fabric and builds p
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the fabric network.
 
-## <a name="managing-ca"></a>Managing Certificate Authorities (CAs)
+## Managing Certificate Authorities (CAs)
 
 A CA is similar to a publicly trusted notary that acts as an anchor of trust among multiple parties, with each organization in a consortium maintaining their own CA. Your CA creates the identities that belong to your organization and issue each identity a signing certificate and private key. These keys are what allow all of your nodes and applications to sign and verify their actions. For more information about how CAs are used to establish identity, see <a href="https://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html" target="_blank">the identity topic</a> in the Hyperledger Fabric documentation.
 
