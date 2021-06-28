@@ -2,14 +2,14 @@
 keywords: create identities, manage identities, Certificate Authorities, register, enroll, TLS CA, wallet, certificate expiration, delete user
 ---
 
-# <a id="creating-managing-identities"></a>Creating and managing identities
+# <a name="creating-managing-identities"></a>Creating and managing identities
 
 The nodes of the Operations Console are based on Hyperledger Fabric and builds permissioned blockchain networks. This means that all participants of the Operations Console consortium need to have identities that are continuously verified by Public Key Infrastructure. The Operations Console allows you to create these identities by using your organization's Certificate Authorities (CAs). You need to store these identities in your console wallet so you can use them to operate your network.
 
 
-**Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
+**Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the fabric network.
 
-## <a id="managing-ca"></a>Managing Certificate Authorities (CAs)
+## <a name="managing-ca"></a>Managing Certificate Authorities (CAs)
 
 A CA is similar to a publicly trusted notary that acts as an anchor of trust among multiple parties, with each organization in a consortium maintaining their own CA. Your CA creates the identities that belong to your organization and issue each identity a signing certificate and private key. These keys are what allow all of your nodes and applications to sign and verify their actions. For more information about how CAs are used to establish identity, see <a href="https://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html" target="_blank">the identity topic</a> in the Hyperledger Fabric documentation.
 
@@ -194,13 +194,13 @@ If you need to enable deletion of registered users from a CA you would insert `"
 
 Note this action does not revoke the associated certificates for the user. If you need to do that you would need to insert the associated signed certificate into the organization MSP under the `"revocation_list":` section. And then update that MSP definition everywhere that it occurs on the network.
 
-### <a id="creating-new-ca-admins"></a>Creating new CA admins
+### <a name="creating-new-ca-admins"></a>Creating new CA admins
 
 By default, only the CA admin that is created during deployment has the ability to register new identities. You can create identities with the ability the register new users by using the **Attributes** panel of the registration process.
 
 On the second side panel, click the **Add Attribute** button. Provide an **attribute name** of `hf.Registrar.Roles`. Enter an **attribute value** of `*`. You can also use this panel to create an identity that can register only certain identity types, such as clients or peers, or within a certain affiliation. You can also create an identity that has the ability to revoke an identity and all the certificates that the identity has been issued. You can see a full list of the attributes in the <a href="https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity" target="_blank">Registering a new identity</a> section of the Fabric CA users guide.
 
-## <a id="enrolling-an-identity"></a>Enrolling an identity
+## <a name="enrolling-an-identity"></a>Enrolling an identity
 
 You can generate the signing certificate and private key for each user that is registered with your CA. If you registered additional admin identities with your CA, you can generate the certificate and key for the admin identity and then include the certificate when you [create your organization MSP](console-organizations#create-your-organization-msp).
 
@@ -218,7 +218,7 @@ Before you enroll an identity, you need to [Associate the identity of the CA adm
 
 You can also use the Fabric CA client or Fabric SDKs to enroll the identities you create in the console. The console provides you with all of the information that need to compete these steps. Ensure that you have saved the **Enroll ID** and **Enroll secret** that you specified during registration.
 
-## <a id="using-your-tls-ca"></a>Using your TLS CA
+## <a name="using-your-tls-ca"></a>Using your TLS CA
 
 The communication within your network is secured by TLS certificates. TLS encrypts the communication between your nodes and between your nodes and your applications. Using TLS prevents attackers from disrupting the communication between your nodes or reading the transactions that are submitted from your applications. The keys and certificates that are used for TLS are different than the certificates used to sign and validate your transactions and are issued by a separate Certificate Authority.
 
@@ -230,7 +230,7 @@ Each peer or orderer node that you deploy needs to generate a public TLS certifi
 
 When creating a peer or orderer with your console, you can also use the TLS CA to specify an additional domain name for each node. Enter the new domain name in the **TLS CSR hostname** field when deploying your orderer or peer. This hostname will be added to the list of common names in the TLS certificate issued to your node.
 
-## <a id="certificate-renewal-and-expiration"></a>Certificate renewal and expiration
+## <a name="certificate-renewal-and-expiration"></a>Certificate renewal and expiration
 
 Certificates expire and need to be renewed regularly in a process referred to as "certificate rotation". In a production network, you need to monitor the expiration dates of the various certificates and make plans to renew them before they expire. The platform attempts to automatically renew the enrollment certificates of the peer and ordering nodes 30 days before they expire, but you are responsible for manually renewing the organization admin certificates for your nodes, system channels and application channels. It is recommended that you review the topic on [managing certificates](console-certificates#managing-certificates) to learn more about what is required.
 
@@ -240,7 +240,7 @@ The wallet stores the identities and keys that the Fabric Operations Console con
 
 >**_IMPORTANT:_** The wallet is a component of the console and not a separate service. It stores your keys in the local storage of the browser that you use to access the console instead of your local file system. If you access your console from a different browser, or start a private browsing session, you will not be able to access the identities stored in the wallet. **It is recommended that you export your admin identities from the console and store them in a safe place**.
 
-### <a id="adding-identities"></a>Adding identities
+### <a name="adding-identities"></a>Adding identities
 
 You can add an admin identity to your wallet when you [create your organization MSP](console-organizations#console-organizations-create-msp). A CA managed by the console can also add an identity to your wallet during the [enrollment process](#enrolling-an-identity).
 
@@ -266,13 +266,13 @@ cat $HOME/<path-to-certificate>/cert.pem | base64 $FLAG
 ```
 
 
-### <a id="viewing-and-updating-identities"></a>Viewing and updating identities
+### <a name="viewing-and-updating-identities"></a>Viewing and updating identities
 
 From the **Wallet** tab, click a tile to view, update, or remove an identity from the wallet. It might be necessary to update your identities if their certificates have expired, and they need to be issued new keys from the CA. You can also use this tab to delete keys from your console and your local system.
 
 Clicking an identity opens a side panel that displays its certificates and private keys in base64 format. Click **Export** to download the identity's certificates to your local file system. Click **Update** to change the identity name in the wallet or paste a new set of keys into the panel. Click **Remove** when you no longer need to use this identity and want to delete its keys.
 
-## <a id="viewing-the-contents-of-a-signing-certificate"></a>Viewing the contents of a signing certificate
+## <a name="viewing-the-contents-of-a-signing-certificate"></a>Viewing the contents of a signing certificate
 
 As a network operator, there may be situations when you need to view the contents of a signing certificate, or sign cert, to debug a problem.
 If you have the certificate `PEM` file, you can run the following openSSL command to print out the certificate contents:
