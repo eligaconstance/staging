@@ -7,9 +7,9 @@ Operations Console is ideal for any customers who want to store their data, run 
 
 ## Before you begin
 
-Before installing the Operations Console, you need to download and install the Fabric samples for set up and run the Fabric test in your local environment. Make sure you have installed all of the [Fabric prerequisites](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html) before [installing the Fabric Samples, Binaries and Docker Images](https://hyperledger-fabric.readthedocs.io/en/latest/install.html).
+Before installing the Operations Console, you need to download and install the Fabric samples for set up and run the Fabric test in your local environment. Make sure you have installed all of the <a href="https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html" target=_blank">Fabric prerequisites</a> before <a href="https://hyperledger-fabric.readthedocs.io/en/latest/install.html" target="_blank">installing the Fabric Samples, Binaries and Docker Images</a>.
 
-Once you have completed downloading the samples and Hyperledger Fabric Docker images, use the scripts provided in the [`fabric-samples` repository](https://github.com/hyperledger/fabric-samples) and  the `./network.sh` to deploy and set up a test network. The test network contains two peer organizations with one peer each and a single node raft ordering service. 
+Once you have completed downloading the samples and Hyperledger Fabric Docker images, use the scripts provided in the <a href="https://github.com/hyperledger/fabric-samples" target="_blank">`fabric-samples` repository</a> and  the `./network.sh` to deploy and set up a test network. The test network contains two peer organizations with one peer each and a single node raft ordering service. 
 
 
 ## Installation
