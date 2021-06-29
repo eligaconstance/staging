@@ -2,7 +2,7 @@
 keywords: organizations, MSPs, create an MSP, MSP JSON file, consortium, system channel, remove an organization
 ---
 
-# <a id="managing-organizations"></a>Managing organizations
+# Managing organizations
 
 You can use the Operations Console to create a formal organization definition that is known as a Membership Services Provider (MSP). Your organization's MSP definition allows other members of the blockchain consortium to verify the identity of your nodes and applications. Your MSP definition also contains your organization's admin certificates.
 
@@ -15,20 +15,20 @@ You can also use the console to manage which organizations are members of your c
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
-## <a id="understanding-msps"></a>Understanding MSPs
+## Understanding MSPs
 
 The Operations Console is based on Hyperledger Fabric. Participants need to be known to the network before they can submit transactions and interact with the assets on the ledger. Fabric recognizes identity through a group of invited organizations at the channel level. Organizations in the consortium are able to issue valid credentials to their members and let them become participants in the network. The participants can then operate blockchain nodes and submit transactions from client applications.
 
-Each organization in a network needs to operate a Certificate Authority to create all of the identities for the admins and nodes that belong to your organization. These public-private keys pairs are issued by the CA and used by the members of your organization to sign and verify their actions. When an organization joins a channel, the public key of the CA associated with that organization allows other organizations to verify that your peers and applications are valid participants. For more information about membership in Hyperledger Fabric, see the [Membership Service Provider](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html)in the Fabric documentation.
+Each organization in a network needs to operate a Certificate Authority to create all of the identities for the admins and nodes that belong to your organization. These public-private keys pairs are issued by the CA and used by the members of your organization to sign and verify their actions. When an organization joins a channel, the public key of the CA associated with that organization allows other organizations to verify that your peers and applications are valid participants. For more information about membership in Hyperledger Fabric, see the <a href="https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html" target="_blank">Membership Service Provider</a> in the Fabric documentation.
 
 Before your organization can join a consortium, it needs to create an organization definition that is known as a **Membership Services Provider (MSP)**. The MSP contains the following information:
 - A certificate signed by your **root Certificate Authority**. This certificate is used to verify the identity of your nodes, channels, and applications.
-- A certificate signed by your **TLS CA**. A root TLS certificate allows your peers to participate in cross organization gossip (A protocol for secure, reliable, and scalable communication of information in a network by passing messages among peers), which is necessary to take advantage of the [Private data collections](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html#what-is-a-private-data-collection) and [Service Discovery](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html) features of Hyperledger Fabric.
+- A certificate signed by your **TLS CA**. A root TLS certificate allows your peers to participate in cross organization gossip (A protocol for secure, reliable, and scalable communication of information in a network by passing messages among peers), which is necessary to take advantage of the <a href="https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html#what-is-a-private-data-collection" target=_blank">Private data collections</a> and <a href="https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html" target="_blank">Service Discovery</a> features of Hyperledger Fabric.
 - The **MSP ID**. The MSP ID is the formal name of your organization. You need to remember the MSP ID for your applications or when using the SDK to submit transactions.
 - The **MSP display name**. This is an informal name that is given to your organization, which is used to identity your MSP in the console.
 - The **Admin certificates** of your **Organization Admin** identities. These certificates are passed to the ordering service and are used to verify which identities in your organization are allowed to create or edit channels. When you use your console to create an ordering node or peer, the admin certificates inside the MSP are deployed within the new node, making your organization admin identities your **peer or orderer admins** as well. You can use these identities to operate your node, such as by installing a smart contract on a peer or joining a peer to a channel, from your console or a client application.
 
-## <a id="managing-msps-in-the-console"></a>Managing MSPs in the console
+## Managing MSPs in the console
 
 Navigate to the **Organizations** tab. You can use this tab to [create an MSP definition](#creating-a-MSP-for-your-organization) by using a Certificate Authority that exists in your console. You can also use this tab to [import a MSP](#importing-a-MSP) that was created by another organization.
 
@@ -40,7 +40,7 @@ You can view all of the MSPs that you created or imported under **Available orga
 
 You can click an MSP definition in the organizations tab to view all of the nodes in the console that belong to each organization. Because each node was deployed with the administrator certificate from the MSP definition inside, you can use this panel to know which nodes are managed by which organization administrator.
 
-## <a id="creating-a-msp-for-your-organization"></a>Creating a MSP for your organization
+## Creating a MSP for your organization
 
 Use the **Organizations** tab to generate an MSP definition for your organization. When you click **Create MSP definition**, a panel will open in which you will enter all the necessary information for your MSP.
 
@@ -64,7 +64,7 @@ Because your admin certs are passed to your nodes and channels by using the MSP 
 
 After you have selected your CA, MSP ID, and either specified or created an admin, click **Create MSP definition**. It should now be listed as an organization in the Organizations tab. Because an MSP is the representation of an organization in the network, you select the MSP definition when you deploy your nodes (identifying the organization the node belongs to), are joined to the consortium (by an ordering service admin), create a channel, join a channel, edit a channel, or perform any action where you have to specify the organization that is performing the action.
 
-## <a id="downloading-a-connection-profile"></a>Downloading a connection profile
+## Downloading a connection profile
 
 After you create an organization MSP definition and create peers with that organization MSP definition, you can download a connection profile that can be used by a client application to connect to your network via one or more gateway peers. The gateway peers are the peers that are specified in the connection profile, and they are used to perform service discovery to find all of the endorsing peers in the network that will endorse transactions.
 
@@ -84,7 +84,7 @@ You can then download the connection profile to your local file system and use i
 
 The generated connection profile only supports Fabric CAs. If you manually built your organization MSP with certificates from an external CA, the connection profile will not include any information in the "certificateAuthorities": section.
 
-### <a id="including-a-certificate-authority-in-a-connection-profile"></a>Including a certificate authority in a connection profile
+### Including a certificate authority in a connection profile
 
 If you plan to use a client application to register and enroll users with the organization CA, then you need to include the associated CA in the connection profile.
 
@@ -186,7 +186,7 @@ But if the `"certificateAuthorities"` section is empty and client application ne
 
 If the organization MSP was manually created by using certificates from an external CA, then there is no reason to add the CA to the connection profile. You cannot register and enroll users with an external CA from a client application.
 
-## <a id="updating-an-organization-msp-definition"></a>Updating an organization MSP definition
+## Updating an organization MSP definition
 
 It is possible that you will need to update an organization MSP definition, such as the display name, or certificates that are included inside the MSP. You can also enable Node OU support on the MSP. Enabling Node OU support is recommended because it greatly simplifies the steps required after certificates are renewed.
 
@@ -203,7 +203,7 @@ To update your MSP:
 
 If you need to add a new admin certificate to an existing organization MSP definition, refer to the topic on [managing certificates](console-certificates).
 
-## <a id="manually-building-a-msp-json-file"></a>Manually building a MSP JSON file
+## Manually building a MSP JSON file
 
 **This option is for advanced users only who are familiar with how certificates are used in blockchain identity management.**
 
@@ -266,13 +266,13 @@ Create a JSON file by using the following format:
 - **tls_root_certs**: Paste in an array that contains one or more root certificates from the TLS CA in `base64` format. You must provide either an external TLS CA root certificate or an external intermediate TLS CA certificate, you can also provide both.
 - **ou_root_cert**: Specify the trusted CA root certificate for each role. Typically this value would be the same as the **root_certs**.
 - **host_url**: Specify the URL of the blockchain console where this MSP will collect signatures.
-- **fabric_node_OUs**: Fabric-specific OUs that enable identity classification. `NodeOUs` contain information for how to distinguish clients, peers, and orderers based on their OU. If the check is enforced, by setting Enabled to true, the MSP considers an identity valid only if it is an identity of type `client`, a `peer`, an `admin`, or an `orderer`. An identity should have only one of these special OUs, which are assigned to an identity when it is registered with the CA. See this topic for an example of [how to specify the `fabric_node_OU` in an MSP](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query) in the Fabric Service Discovery documentation. Or learn more about using [Node OUs](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html#node-ou-roles-and-msps) in Fabric.
+- **fabric_node_OUs**: Fabric-specific OUs that enable identity classification. `NodeOUs` contain information for how to distinguish clients, peers, and orderers based on their OU. If the check is enforced, by setting Enabled to true, the MSP considers an identity valid only if it is an identity of type `client`, a `peer`, an `admin`, or an `orderer`. An identity should have only one of these special OUs, which are assigned to an identity when it is registered with the CA. See this topic for an example of <a href="https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query" target="_blank">how to specify the `fabric_node_OU` in a MSP</a> in the Fabric Service Discovery documentation. Or learn more about using <a href="https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html#node-ou-roles-and-msps" target="_blank">ONode OUs</a> in Fabric.
 
 The following additional fields are also available in your MSP definition but are not required:
 - **intermediate_certs**: (if an intermediate CA was used) Paste in an array that contains one or more certificates from the external intermediate CA in `base64` format. You must provide either a CA root certificate or an intermediate CA certificate, you can also provide both.
 - **tls_intermediate_certs**: (if an intermediate TLS CA was used) Paste in an array that contains one or more certificates from the intermediate TLS CA in `base64` format. You must provide either an external TLS CA root certificate or an external intermediate TLS CA certificate, you can also provide both.
-- **organizational_unit_identifiers**: A list of Organizational Units (OU) that valid members of this MSP should include in their X.509 certificate. This is an optional configuration parameter that is used when multiple organizations leverage the same root of trust and intermediate CAs, and they have reserved an OU field for their members. An organization is often divided up into multiple organizational units (OUs), each of which has a certain set of responsibilities. For example, the ORG1 organization might have both ORG1-MANUFACTURING and ORG1-DISTRIBUTION OUs to reflect these separate lines of business. When a CA issues X.509 certificates, the OU field in the certificate specifies the line of business to which the identity belongs. See this topic in the Fabric documentation on [Identity Classification](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification) for more information.
-- **revocation_list**: A list of certificates that are no longer valid. For X.509-based identities, these identifiers are pairs of strings that are known as Subject Key Identifier (SKI) and Authority Key Identifier (AKI), and are checked whenever the X.509 certificate is being used to make sure that the certificate has not been revoked. See this topic in the Fabric documentation for more information about [Certificate Revocation Lists](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity).
+- **organizational_unit_identifiers**: A list of Organizational Units (OU) that valid members of this MSP should include in their X.509 certificate. This is an optional configuration parameter that is used when multiple organizations leverage the same root of trust and intermediate CAs, and they have reserved an OU field for their members. An organization is often divided up into multiple organizational units (OUs), each of which has a certain set of responsibilities. For example, the ORG1 organization might have both ORG1-MANUFACTURING and ORG1-DISTRIBUTION OUs to reflect these separate lines of business. When a CA issues X.509 certificates, the OU field in the certificate specifies the line of business to which the identity belongs. See this topic in the Fabric documentation on <a href="https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification" target="_blank">Identity Classification</a> for more information.
+- **revocation_list**: A list of certificates that are no longer valid. For X.509-based identities, these identifiers are pairs of strings that are known as Subject Key Identifier (SKI) and Authority Key Identifier (AKI), and are checked whenever the X.509 certificate is being used to make sure that the certificate has not been revoked. See this topic in the Fabric documentation for more information about <a href="https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity" target="_blank">Certificate Revocation Lists</a>.
 
 For example, your JSON file would look similar to:
 
@@ -320,19 +320,19 @@ Save this definition as your MSP definition `JSON` file.
 
 You have constructed an MSP definition, which defines the organization for your peer or ordering service nodes, and uses certificates from an external CA. You can now return to the instructions that describe [How to use certificates from an external CA with your peer or ordering node](external-cert-peer-orderer).
 
-## <a id="importing-a-msp"></a>Importing a MSP
+## Importing a MSP
 
 Only the orderer admin can add new organizations to the consortium. If you are the orderer admin, you will need to collect the MSP definitions of all the organizations who have been invited to the consortium and import the MSPs into the console. You can then add the MSPs to the ordering service, by using the orderer node.
 
 After an administrator creates an MSP definition, they can use the Organizations tab to download the MSP in JSON format to their local file system. They can then send you the MSP JSON file in an out of band operation. Navigate to the **Organizations** tab and use **Import MSP Definition** to import the MSP file into your console. Once an MSP definition is visible in the **Available organizations** section, you can then navigate to your orderer node to add the organization to the consortium.
 
-## <a id="adding-an-organization-to-a-consortium"></a>Adding an organization to a consortium
+## Adding an organization to a consortium
 
 The consortium of organizations is hosted by the ordering service.
 
 If you are the administrator of the ordering service, you can use the console to add an organization to the consortium. Navigate to the **Nodes** tab and click the ordering service. On the ordering service panel, under **Consortium members**, click **Add organization**. A side panel opens where you can select from the list of available MSP definitions that you [imported into your organizations tab](#importing-a-msp). You can also use the **Upload JSON** option to import the MSP definition file created by another org directly.
 
-## <a id="creating-and-editing-a-channel"></a>Creating and editing a channel
+## Creating and editing a channel
 
 After an organization is added to the consortium, the organization can use the ordering service to create a new channel or can be added to an existing channel. The information that allows you to participate in a channel, such as joining your peers to the channel, instantiating smart contracts, and submitting transactions, is provided by using the MSP definitions.
 
@@ -342,9 +342,9 @@ After your organization is added to a consortium, you can create a channel by us
 2. Import the MSPs of organizations that you want to add to the new channel into your console in the **Organizations** tab. **Note** that organizations need to be added to the consortium before they can be added to a channel.
 3. Navigate to the **Channels** tab and click **Create channel**. This opens a side panel that allows you to specify the channel name, membership, and channel policies. You can add any organizations that were added to the consortium to the new channel.
 
-For more information about these steps, see [creating a channel](console-build-network/#step-four-create:-a-channel) in the **Build a network** tutorial.
+For more information about these steps, see [creating a channel](console-build-network/#step-four-create-a-channel) in the **Build a network** tutorial.
 
-### <a id="updating-a-msp-in-a-channel-definition"></a>Updating a MSP in a channel definition
+### Updating a MSP in a channel definition
 
 Over time you might need to update the certificates in an MSP definition that is already associated with a channel. When that situation occurs follow these steps to update an organization's MSP definition in the channel:  
 
@@ -354,13 +354,13 @@ Over time you might need to update the certificates in an MSP definition that is
 4. Click the associated channel member's tile that you want to update.
 5. If you have not already imported the updated MSP definition into the console, you can upload the file here. **Note:** This action will not update the associated MSP definition in the Organizations tab. If you have already updated the MSP definition in the Organizations tab of the console, you can select it from the drop-down list.
 
-## <a id="removing-an-organization"></a>Removing an organization
+## Removing an organization
 
 If you want to stop using an instance of the {{site.data.keyword.blockchainfull_notm}} Platform, you need to remove your organization from the blockchain network before you delete your service instance. This ensures that the removed organization is not affecting the governance of the network after it has left the network. You can remove your organization by using the following steps:
 
 1. **Remove your organization from channels that you joined**. You need to [update the endorsement policy](console-smart-contracts/#specifying-a-smart-contract-endorsement-policy) of the smart contracts that are deployed on the channel to remove your organization from the policy. If you do not update the endorsement policy, your organization might be required to endorse transactions after you have left the channel, causing transactions to fail.
 
-  You can then update to the channel to remove your organization from the list of channel members. Navigate to the **Channels** tab and click the **Settings** icon. You can use the **Organizations** section to remove your organization from the channel. The channel **update policy** is updated to remove your organization automatically. When you are ready, click **Update channel** to submit a channel update request. The request starts the [process for collecting the signatures](console-smart-contracts/#step-two:-install-and-propose-smart-contract) that are required to update the channel, depending on your update policy.
+  You can then update to the channel to remove your organization from the list of channel members. Navigate to the **Channels** tab and click the **Settings** icon. You can use the **Organizations** section to remove your organization from the channel. The channel **update policy** is updated to remove your organization automatically. When you are ready, click **Update channel** to submit a channel update request. The request starts the [process for collecting the signatures](console-smart-contracts/#step-two-install-and-propose-smart-contract) that are required to update the channel, depending on your update policy.
 
   After you remove your organization from the channel, you can delete your peers in the Operations Console. If transactions can be successfully submitted to the network after you remove your peers, your organization is no longer required to endorse transactions.
 
