@@ -20,4 +20,4 @@ Once you have completed downloading the samples and Hyperledger Fabric Docker im
 
 ### Step three: Connect networks across clouds
 
-You can use your console to operate components that are running on other clusters. First, you need to export the component information to a JSON file from the console where the component was originally deployed. Then, you can import the node JSON file into the console that is deployed on your local environment and manage the components. For more information, see [importing nodes](docs/console-import-nodes).
+You can use your console to operate components that are running on other clusters. First, you need to export the component information to a JSON file from the console where the component was originally deployed. Then, you can import the node JSON file into the console that is deployed on your local environment and manage the components. For more information, see [importing nodes](/docs/console-import-nodes).
