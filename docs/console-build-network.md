@@ -139,7 +139,7 @@ Once you have associated the CA admin, you can use the CA tile to create these i
   | --------- | ----------------- | --------- | ----------|-----------|
   | **Create CA**  | CA admin | admin | adminpw | client |
   | **Register users** | Org1 admin | org1admin | org1adminpw | admin |
-  | ---------- | Peer identity | peer1 | peer1pw | peer |
+  |  | Peer identity | peer1 | peer1pw | peer |
 
   <p style="text-align:center"><em>Table 4. Using your CA to register users.</em></p>
 
@@ -153,6 +153,7 @@ Now that we have created the peer's CA and used it to **register** identities fo
 4. On the **Admin certificates panel**, select the enroll ID you created for your organization admin from the drop-down list, `org1admin`, and enter its associated secret, `org1adminpw`. Then, give this identity a display name, `Org1 MSP Admin`. Note: the default display name for this identity is the name of your MSP and the word "Admin". If you select a different name for your MSP, that will be reflected in the default.
 5. Click the **Generate** button to enroll this identity as the admin of your organization and export the identity to the Wallet, where it will be used when creating the peer and creating channels.
 6. Click **Export** to export the admin certificates to your file system. As we said above, this identity is not stored in your console or managed by Fabric Operatons Console. It is only stored in local browser storage. If you change browsers, you will need to import this identity into your Wallet to be able to administer the peer. Click **Next**.  
+
     >**_IMPORTANT:_** Exporting your organization admin identity is important because you are responsible for managing and securing these certificates. If you switch browsers, you will need to import this admin identity otherwise you will not be able to operate Org1.
 7. On the **Review MSP information** panel, make sure you have entered the correct information. When you are satisfied, click **Create MSP definition**.
 8. After the MSP has been created, click on the tile representing it. Then **download** the MSP to your local filesystem. You will need to send this MSP to all of the organizations the channels you join.
@@ -293,6 +294,7 @@ You should be able to see the CA admin in your **Wallet**. As we said above, the
   | **Identity** | Org1 CA Admin | Org1 CA admin identity |
   | **Identity** | Org1 MSP Admin   | Org1 admin identity |
   | **Identity** | Ordering Service CA Admin | Ordering Service CA admin identity |
+
   <p style="text-align:center"><em>Table 9. Check your Wallet.</em></p>
 
 ### Using your CA to register ordering service node and ordering service admin identities
@@ -327,7 +329,8 @@ Create your ordering service organization MSP definition and specify the admin i
 3. Under **Root Certificate Authority details**, specify the CA you used to register the identities in the previous step, `Ordering Service CA`.
 4. The **Enroll ID** and **Enroll secret** fields below this will auto populate with the enroll ID of your CA admin: `admin`. However, using this identity would give your organization the same admin identity as your CA, which for security reasons is not recommended. Instead, select the enroll ID you created for your organization admin from the drop-down list, `OSadmin`, and enter its associated secret, `OSadminpw`. Then, give this identity a display name, `Ordering Service MSP Admin`. Note: the default display name for this identity is the name of your MSP and the word "Admin". If you select a different name for your MSP, that will be reflected in the default.
 5. Click the **Generate** button to enroll this identity as the admin of your organization and export the identity to the Wallet.
-6. Click **Export** to export the admin certificates to your file system. As we said above, this identity is not stored in your console or managed by Fabric Operatons Console. It is only stored in local browser storage. If you change browsers, you will need to import this identity into your Wallet to be able to administer the peer.  
+6. Click **Export** to export the admin certificates to your file system. As we said above, this identity is not stored in your console or managed by Fabric Operatons Console. It is only stored in local browser storage. If you change browsers, you will need to import this identity into your Wallet to be able to administer the peer. 
+ 
     >**_IMPORTANT:_** Exporting your organization admin identity is important because you are responsible for managing and securing these certificates. If you export the ordering service and the ordering service MSP definition, they can be imported into another console where another operator can create new channels on the ordering service or join peers to the channel.
   
 7. Click **Create MSP definition**.

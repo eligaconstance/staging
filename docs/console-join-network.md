@@ -133,7 +133,7 @@ Once you have associated the CA admin, you can use the CA tile to create these i
   | ---------------- | ----------- | ----------- | ----------- | ----------- |
   | **Create CA**  | CA admin | admin | adminpw | client |
   | **Register users** |  Org2 MSP Admin  | org2admin | org2adminpw | admin |
-  |  -------------------- | Peer identity | peer2 | peer2pw | peer |
+  |  | Peer identity | peer2 | peer2pw | peer |
 
   <p style="text-align:center"><em>Table 4. Using your CA to register user</em></p>
 
@@ -147,6 +147,7 @@ Now that we have created the peer's CA and used it to **register** our organizat
 4. On the **Admin certificates panel**, select the enroll ID you created for your organization admin from the drop-down list, `org2admin`, and enter its associated secret, `org2adminpw`. Then, give this identity a display name, `Org2 MSP Admin`. Note: the default display name for this identity is the name of your MSP and the word "Admin". If you select a different name for your MSP, that will be reflected in the default.
 5. Click the **Generate** button to enroll this identity as the admin of your organization and export the identity to the Wallet, where it will be used when creating the peer and creating channels.
 6. Click **Export** to export the admin certificates to your file system. As we said above, this identity is not stored in your console or managed by {{site.data.keyword.IBM_notm}}. It is only stored in local browser storage. If you change browsers, you will need to import this identity into your Wallet to be able to administer the peer. Click **Next**.  
+
   >**_IMPORTANT:_** Exporting your organization admin identity is important because you are responsible for managing and securing these certificates. If you switch browsers, you will need to import this admin identity otherwise you will not be able to operate Org2.
   
 7. On the **Review MSP information** panel, make sure you have entered the correct information. When you are satisfied, click **Create MSP definition**.
@@ -312,7 +313,6 @@ Once the MSP representing Org2 has been received, an administrator of the orderi
 
 >**_TIP:_** This step needs to be completed by an ordering service admin.
 
-
 After the MSP representing Org2 has been imported, use these steps to add the peer organization to the consortium hosted by the ordering service. Only ordering service admins, those who are listed under **Ordering service administrators** in the **Details** tab of the ordering service, can add peer organizations to the consortium. You must have the ordering service organization admin identity in your Wallet to perform this task.
 
 1. Navigate to the **Nodes** tab.
@@ -357,7 +357,7 @@ When you are ready, click **Create channel**. You will be taken back to the **Ch
   | **Access control list** | None |
   | **Channel creator MSP** | Org2 MSP |
   | **Identity** | Org2 MSP Admin  |
-  
+
  <p style="text-align:center"><em>Table 8. Create a channel</em></p>
 
 The next step is to join a peer to this channel. Click the pending tile and select the organization peers to be added to the channel.
