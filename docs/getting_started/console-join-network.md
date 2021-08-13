@@ -83,6 +83,7 @@ Each CA is created with a CA admin identity. You can use the admin to register n
 
 >**_IMPORTANT:_** Depending on your cluster type, deployment of the CA can take up to ten minutes. When the CA is first deployed (or when the CA is otherwise unavailable), the box in the tile for the CA will be gray box. When the CA has successfully deployed and is running, this box will be green, indicating that it is "Running" and can be operated from the console. Before proceeding with the steps below, you must wait until the CA status is "Running". If the gray box stops blinking, you can try reloading the page in your browser to refresh the status.
 
+
 Once the CA is running, as indicated by the green box in the tile, complete the following steps:
 
 1. Click the `Org2 CA` tile in the **Nodes** tab. Then click **Associate identity** on the CA overview panel.
@@ -104,7 +105,7 @@ You can view the CA admin identity in your console wallet by clicking on the **W
 **Task: Check your Wallet**
 
   | **Field** |  **Display name** | **Description** |
-  | ------------- | --------------- | ----------------------- |
+  | ------------- | --------------- | ------------- |
   | **Identity** | Org2 CA Admin | Org2 CA admin identity |
 
  <p style="text-align:center"><em>Table 3. Check your Wallet</em></p>
@@ -125,13 +126,14 @@ Once you have associated the CA admin, you can use the CA tile to create these i
 
 >**_NOTE:_** Registering these identities with the CA is only the first step in **creating** an identity. You will not be able to use these identities until they have been **enrolled**. For the `org2admin` identity, this will happen during the creation of the MSP, which we will see in the next step. In the case of the peer2 identity, it happens during the creation of the peer.
 
+
 **Task: Register users**
 
   |  **Field** | **Description** | **Enroll ID** | **Secret** | **Type** |
   | ---------------- | ----------- | ----------- | ----------- | ----------- |
   | **Create CA**  | CA admin | admin | adminpw | client |
   | **Register users** |  Org2 MSP Admin  | org2admin | org2adminpw | admin |
-  |    | Peer identity | peer2 | peer2pw | peer |
+  |  | Peer identity | peer2 | peer2pw | peer |
 
   <p style="text-align:center"><em>Table 4. Using your CA to register user</em></p>
 
@@ -154,12 +156,12 @@ Now that we have created the peer's CA and used it to **register** our organizat
 
 **Task: Create the peer organization MSP definition**
 
-  |    | **Display name** | **MSP ID** | **Enroll ID**  | **Secret** |
+  |  | **Display name** | **MSP ID** | **Enroll ID**  | **Secret** |
   | ---------------- | ----------- | ----------- | ----------- | ----------- |
-  | **Create Organization** | Org2 MSP | org2msp |    |    |
-  | **Root CA** | Org2 CA |    |    |    |
-  | **Org Admin Cert** |    |    | org2admin | org2adminpw |
-  | **Identity** | Org2 MSP Admin |    |    |    |
+  | **Create Organization** | Org2 MSP | org2msp |  |  |
+  | **Root CA** | Org2 CA |  |  |  |
+  | **Org Admin Cert** |  |  | org2admin | org2adminpw |
+  | **Identity** | Org2 MSP Admin |  |  |  |
 
   <p style="text-align:center"><em>Table 5. Create the peer organization MSP definition</em></p>
 
@@ -206,17 +208,18 @@ Use your console to perform the following steps:
 
 **Task: Deploying a peer**
 
-|    | **Display name** | **MSP ID** | **Enroll ID** | **Secret** |
+|  | **Display name** | **MSP ID** | **Enroll ID** | **Secret** |
 | ----------------- | ----------- | -------------- | ----------- | ------- |
-| **Create Peer** | Peer Org2 | org2msp |    |    |
-| **CA** | Org2 CA |    |    |    |
-| **Peer Identity** |    |    | peer2 | peer2pw |
-| **Administrator certificate** | org2msp |    |    |    |
-| **Associate identity** | Org2 MSP Admin  |    |    |    |
+| **Create Peer** | Peer Org2 | org2msp |  |  |
+| **CA** | Org2 CA |  |  |  |
+| **Peer Identity** |  |  | peer2 | peer2pw |
+| **Administrator certificate** | org2msp |  |  |  |
+| **Associate identity** | Org2 MSP Admin  |  |  |  |
 
 <p style="text-align:center"><em>Table 7. Deploying a peer</em></p>
 
 >**_TIP:_** In a production scenario, it is recommended to deploy three peers to each channel. This is to allow one peer to go down (for example, during a maintenance cycle) and still maintain highly available peers. To deploy more than one peer for an organization, use the same CA you used to register your first peer identity. In this tutorial, that would be `Org2 CA`. Then, register a new peer identity using a distinct enroll ID and secret. For example, `org2secondpeer` and `org2secondpeerpw`. Then, when creating the peer, give this enroll ID and secret. As this peer is still associated with Org2, choose `Org2 CA`, `Org2 MSP`, and `Org2 MSP Admin ` from the drop-down lists. You may choose to give this new peer a different admin, which can be registered and enrolled with `Org2 CA`, but this optional. This tutorial series will only show the process for creating a single peer for each peer organization.
+
 
 ## Step two: Add Org2 to an existing channel
 
@@ -303,12 +306,12 @@ If the ordering service admin does not already have your MSP, export it and send
 
 >**_TIP:_** This step needs to be completed by an ordering service admin.
 
+
 Once the MSP representing Org2 has been received, an administrator of the ordering service must import the JSON file by navigated to the **Organizations** tab, clicking the **Import MSP definition** button, and selecting the JSON file that represents the `Org2 MSP` peer organization MSP definition.
 
 ### Add Org2 MSP to the ordering service consortium
 
 >**_TIP:_** This step needs to be completed by an ordering service admin.
-
 
 After the MSP representing Org2 has been imported, use these steps to add the peer organization to the consortium hosted by the ordering service. Only ordering service admins, those who are listed under **Ordering service administrators** in the **Details** tab of the ordering service, can add peer organizations to the consortium. You must have the ordering service organization admin identity in your Wallet to perform this task.
 

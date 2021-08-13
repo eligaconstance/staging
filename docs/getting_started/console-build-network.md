@@ -73,9 +73,9 @@ To create the CA that will issue certificates for your first organization, perfo
 
 **Task: Creating the peer organization CA**
 
-  |     **Field**       | **Display name** | **Enroll ID** | **Secret** |
-  | --------------- | ------------------- | -------------- | ----------- |
-  | **Create CA** |          Org1 CA           |        admin       |  adminpw |
+  | **Field**     | **Display name** | **Enroll ID** | **Secret** |
+  | ------------- | ---------------- | ------------- | ---------- |
+  | **Create CA** | Org1 CA          | admin         | adminpw |
 
   <p style="text-align:center"><em>Table 1. Creating the peer organization CA.</em></p>
 
@@ -98,9 +98,9 @@ After setting the CA admin identity, you will be able to see the table of regist
 
 **Task: Associate identity**
 
-  |     **Field**    | **Display name** | **Enroll ID** | **Secret** |
-  | -------------- | ------------------ | -------------- | ------------|
-  | **Enroll ID** |     Org1 CA Admin   |            x             |   adminpw  |
+  | **Field**     | **Display name** | **Enroll ID** | **Secret** |
+  | ------------- | ---------------- | ------------- | -----------|
+  | **Enroll ID** | Org1 CA Admin    | x             | adminpw    |
 
   <p style="text-align:center"><em>Table 2. Associate the CA admin identity.</em></p>
 
@@ -109,9 +109,9 @@ You can view the CA admin identity in your console Wallet by clicking on the **W
 
 **Task: Check your Wallet**
 
-  |    **Field**    |  **Display name** |       **Description**       |
+  | **Field**    | **Display name** | **Description** |
   | ------------- | ------------------- | ------------------------ |
-  | **Identity** |     Org1 CA Admin    | Org1 CA admin identity |
+  | **Identity** | Org1 CA Admin    | Org1 CA admin identity |
 
   <p style="text-align:center"><em>Table 3. Check your Wallet.</em></p>
 
@@ -160,12 +160,12 @@ Now that we have created the peer's CA and used it to **register** identities fo
 
 **Task: Create the peer organization MSP**
 
-  |   | **Display name** | **MSP ID** | **Enroll ID**  | **Secret** |
+  |  | **Display name** | **MSP ID** | **Enroll ID**  | **Secret** |
   | ------------------------- | --------- | --------- | --------- | --------- |
   | **Create Organization** | Org1 MSP | org1msp |  |  |
   | **Root CA** | Org1 CA |   |  |  |
   | **Org Admin Cert** |  |  | org1admin | org1adminpw |
-  | **Identity** | Org1 MSP Admin |   |   |    |
+  | **Identity** | Org1 MSP Admin |  |  |  |
 
   <p style="text-align:center"><em>Table 5. Create the peer organization MSP definition.</em></p>
 
@@ -213,13 +213,13 @@ Use your console to perform the following steps:
 
 **Task: Deploying a peer**
 
-  |    | **Display name** | **MSP ID** | **Enroll ID** | **Secret** |
+  |  | **Display name** | **MSP ID** | **Enroll ID** | **Secret** |
   | ----------------- |-----------|-----------|-----------|-----------|
-  | **Create Peer** | Peer Org1 | org1msp |    |    |
-  | **CA** | Org1 CA |    |    |    |
-  | **Peer Identity** |    |    | peer1 | peer1pw |
-  | **Administrator certificate** | org1msp |    |    |    |
-  | **Associate identity** | Org1 MSP Admin |    |    |    |
+  | **Create Peer** | Peer Org1 | org1msp |  |  |
+  | **CA** | Org1 CA |  |  |  |
+  | **Peer Identity** |  |  | peer1 | peer1pw |
+  | **Administrator certificate** | org1msp |  |  |  |
+  | **Associate identity** | Org1 MSP Admin |  |  |  |
 
   <p style="text-align:center"><em>Table 7. Deploying a peer.</em></p>
 
@@ -314,7 +314,7 @@ After you have associated the CA admin, you can use the CA tile to create these 
   | ------------------------- |-----------|-----------|-----------|-----------|
   | **Create CA** | Ordering Service CA | admin | adminpw | client |
   | **Register users** | Ordering Service admin | OSadmin | OSadminpw | admin |
-  |    | Ordering Service node identity |  OS1 | OS1pw | orderer |
+  |  | Ordering Service node identity |  OS1 | OS1pw | orderer |
 
   <p style="text-align:center"><em>Table 10. Create a CA and register users.</em></p>
 
@@ -329,8 +329,8 @@ Create your ordering service organization MSP definition and specify the admin i
 3. Under **Root Certificate Authority details**, specify the CA you used to register the identities in the previous step, `Ordering Service CA`.
 4. The **Enroll ID** and **Enroll secret** fields below this will auto populate with the enroll ID of your CA admin: `admin`. However, using this identity would give your organization the same admin identity as your CA, which for security reasons is not recommended. Instead, select the enroll ID you created for your organization admin from the drop-down list, `OSadmin`, and enter its associated secret, `OSadminpw`. Then, give this identity a display name, `Ordering Service MSP Admin`. Note: the default display name for this identity is the name of your MSP and the word "Admin". If you select a different name for your MSP, that will be reflected in the default.
 5. Click the **Generate** button to enroll this identity as the admin of your organization and export the identity to the Wallet.
-6. Click **Export** to export the admin certificates to your file system. As we said above, this identity is not stored in your console or managed by Fabric Operatons Console. It is only stored in local browser storage. If you change browsers, you will need to import this identity into your Wallet to be able to administer the peer.  
-
+6. Click **Export** to export the admin certificates to your file system. As we said above, this identity is not stored in your console or managed by Fabric Operatons Console. It is only stored in local browser storage. If you change browsers, you will need to import this identity into your Wallet to be able to administer the peer. 
+ 
     >**_IMPORTANT:_** Exporting your organization admin identity is important because you are responsible for managing and securing these certificates. If you export the ordering service and the ordering service MSP definition, they can be imported into another console where another operator can create new channels on the ordering service or join peers to the channel.
   
 7. Click **Create MSP definition**.
@@ -338,12 +338,12 @@ Create your ordering service organization MSP definition and specify the admin i
 
 **Task: Create the ordering service organization MSP definition**
 
-  |    | **Display name** | **MSP ID** | **Enroll ID**  | **Secret** |
+  |  | **Display name** | **MSP ID** | **Enroll ID**  | **Secret** |
   |----------------- | ----------- | ----------- | ----------- | ----------- |
-  | **Create Organization** | Ordering Service MSP | osmsp |    |    |
-  | **Root CA** | Ordering Service CA |    |    |    |
-  | **Org Admin Cert** |    |    | OSadmin | OSadminpw |
-  | **Identity** | Ordering Service MSP Admin |    |    |    |
+  | **Create Organization** | Ordering Service MSP | osmsp |  |  |
+  | **Root CA** | Ordering Service CA |  |  |  |
+  | **Org Admin Cert** |  |  | OSadmin | OSadminpw |
+  | **Identity** | Ordering Service MSP Admin |  |  |  |
 
   <p style="text-align:center"><em>Table 11. Create the ordering service organization MSP definition.</em></p>
 
@@ -382,13 +382,13 @@ Perform the following steps from your console:
 
 **Task: Create an ordering service**
 
-  |    | **Display name** | **MSP ID** | **Enroll ID** | **Secret** |
-  | ------------------------- |-----------|-----------|-----------|-----------|
-  | **Create ordering service** | Ordering Service | osmsp |    |    |
-  | **CA** | Ordering Service CA |    |    |    |
-  | **Ordering Service Identity** |    |    | OS1 | OS1pw |
-  | **Administrator certificate** | Ordering Service MSP |    |    |    |
-  | **Associate identity** | Ordering Service MSP Admin   |    |    |    |
+  |  | **Display name** | **MSP ID** | **Enroll ID** | **Secret** |
+  | ------------------- |-----------|-----------|-----------|-----------|
+  | **Create ordering service** | Ordering Service | osmsp |  |  |
+  | **CA** | Ordering Service CA |  |  |  |
+  | **Ordering Service Identity** |  |  | OS1 | OS1pw |
+  | **Administrator certificate** | Ordering Service MSP |  |  |  |
+  | **Associate identity** | Ordering Service MSP Admin   |  |  |  |
 
  <p style="text-align:center"><em>Table 13. Create an ordering service.</em></p>
 
@@ -462,7 +462,7 @@ Perform the following steps from your console:
 **Task: Create a channel**
 
   |  **Field** | **Name** |
-  | ---------------------- |-----------|
+  | ------------------- |-----------|
   | **Channel name** | channel1 |
   | **Ordering Service** | Ordering Service |
   | **Organizations** | Org1 MSP |
@@ -470,7 +470,7 @@ Perform the following steps from your console:
   | **Access control list** | None |
   | **Channel creator MSP** | Org1 MSP |
   | **Identity** | Org1 MSP Admin  |
-  
+
   <p style="text-align:center"><em>Table 14. Create a channel.</em></p>
 
 The next step is to join a peer to this channel.

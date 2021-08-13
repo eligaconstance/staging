@@ -1,14 +1,10 @@
 ---
-layout: default
-title: Writing powerful smart contracts
-parent: Deploy a smart contract
-nav_order: 2
 keywords: smart contract, lifecycle, package, definition
 ---
 
 # Writing powerful smart contracts
 
-As Hyperledger Fabric and the Fabric Operatons Console have evolved, their processes have been made more decentralized and collaborative. This is why, for example, the old “Kafka” ordering service, in which a single organization owned and managed the ordering service, was replaced with a “Raft” ordering service in which multiple organizations can administer the ordering service and contribute nodes.
+As Hyperledger Fabric and the Operations Console have evolved, their processes have been made more decentralized and collaborative. This is why, for example, the old “Kafka” ordering service, in which a single organization owned and managed the ordering service, was replaced with a “Raft” ordering service in which multiple organizations can administer the ordering service and contribute nodes.
 
 This same spirit of decentralization and collaboration also drove the development of a new series of processes around installing, managing, and using smart contracts (these processes are known as the “lifecycle” of a smart contract).
 
@@ -68,7 +64,7 @@ A hypothetical third Org might only need the ability to **verify** information w
 
 While the desire to reduce unnecessary code clutter is always worthwhile on its own, this ability for different organizations to have different smart contracts is particularly useful in scenarios when the code to perform certain actions might contain sensitive information (the location of a server where ads are created, for example).
 
-While the “old” lifecycle did include ways to separate roles through a permissions structure, the ability for different orgs to have different packages is a more secure and holistic approach to the separation of concerns central to fabric networks, and should be taken in account when developing smart contracts to run using the new lifecycle.
+While the “old” lifecycle did include ways to separate roles through a permissions structure, the ability for different orgs to have different packages is a more secure and holistic approach to the separation of concerns central to blockchain networks, and should be taken in account when developing smart contracts to run using the new lifecycle.
 
 In any case, it is a best practice for smart contracts to be tested extensively (preferably on a test channel dedicated to this purpose) to ensure that all smart contract packages produce the same result, regardless of the underlying code generating that result. However, keep in mind that as long as an errant result is not reached by enough peers to satisfy the endorsement policy of a smart contract, the integrity of ledger data will be maintained.
 
@@ -79,7 +75,7 @@ In any case, it is a best practice for smart contracts to be tested extensively 
 Smart contracts can be updated for a variety of reasons. As part of onboarding a new member to a channel, for example, or to reflect new businesses processes and use cases.
 
 In the onboarding example, it is likely that only the smart contract definition will need to be updated to reflect the new organization’s ability to endorse transactions (if that will indeed be their role). If the underlying business logic contained in the package changes, on the other hand, then both the package and the definition will have to change (the latter to reflect a new version).
-While updating the version in the definition is enforced by Fabric whenever a new package is installed, the standards adopted by a channel for how those versions are organized are up to the members of the channel. However, it is recommended to use a consistent semantic versioning pattern.
+While updating the version in the definition is enforced by Fabric and the IBM Blockchain Platform whenever a new package is installed, the standards adopted by a channel for how those versions are organized are up to the members of the channel. However, it is recommended to use a consistent semantic versioning pattern.
 
 >**_TIP:_** In production scenarios, new business logic might be agreed to by the channel members collectively (out of band) and then be written by a single channel member and passed to the others. If this code will replace custom code you have in your own smart contract package, make sure you do not overwrite custom variables you already have by replacing the section of your smart contract without analysis.
 
@@ -88,7 +84,7 @@ While updating the version in the definition is enforced by Fabric whenever a ne
 
 Like everything else about your network, your smart contracts should be tailored for your use case. While a simple smart contract shared in its entirety among every member of a channel might adequately fulfill your needs, the new lifecycle opens opportunities for specialization and separation of concerns that didn't exist before and shouldn't be ignored.
 
-For more information about smart contract best practices (as well as how smart contracts relate to the concept of "chaincode"), see <a href="https://hyperledger-fabric.readthedocs.io/en/release-2.0/smartcontract/smartcontract.html" target="_blank">smart contracts and chaincode <img src="../images/external.png" width="10" alt="external" valign="middle"></a>.
+For more information about smart contract best practices (as well as how smart contracts relate to the concept of "chaincode"), see <a href="https://hyperledger-fabric.readthedocs.io/en/release-2.0/smartcontract/smartcontract.html" target="_blank">Smart contracts and chaincode</a>.
 
 ## Smart contract development tooling
 
@@ -97,4 +93,4 @@ While a smart contract can be packaged using the peer CLI.
 
 ## Installing a package and proposing a definition
 
-For information about how to use the console to install smart contract packages and propose and commit smart contract definitions on a channel, see [deploy a smart contract using Fabric v2.x](../smart_contracts/console-smart-contracts-v2.md).
+For information about how to use the console to install smart contract packages and propose and commit smart contract definitions on a channel, see [Deploy a smart contract using Fabric v2.x](/staging/console-smart-contracts-v2).
