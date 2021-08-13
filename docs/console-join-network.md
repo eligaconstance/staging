@@ -210,7 +210,7 @@ Use your console to perform the following steps:
 
 |  | **Display name** | **MSP ID** | **Enroll ID** | **Secret** |
 | ----------------- | ----------- | -------------- | ----------- | ------- |
-| **Create Peer** | Peer Org2 | org2msp | ------- | ------- |
+| **Create Peer** | Peer Org2 | org2msp |  |  |
 | **CA** | Org2 CA |  |  |  |
 | **Peer Identity** |  |  | peer2 | peer2pw |
 | **Administrator certificate** | org2msp |  |  |  |
